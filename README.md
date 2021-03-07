@@ -41,7 +41,6 @@ We hope that you will love our platform!
 
 ### Built With
 
-This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 * [Ruby - ver. 5.7.1](https://ruby-doc.org/core-2.7.1/)
 * [Ruby on Rails - ver. 5.2.3](https://rubyonrails.org/)
 * [JavaScript]()

@@ -34,7 +34,7 @@
 
 Welcome to the Kitten Picture Eshop Platform!
 
-With a large fashion and trendy selection of kitten pictures, you just have to select your favorite one and pay online and the glory is yours! 
+With a large fashion and trendy selection of kitten pictures, you just have to select your favorite one, pay online and the glory is yours! 
 
 We hope that you will love our platform! 
 

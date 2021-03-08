@@ -1,3 +1,10 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'items#index'
+  devise_for :users, :skip => [:sessions]
+  as :user do
+      post "/users/sign_in" => "devise/sessions#create", :as => :user_session
+      delete "/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
+  end
+  resources :items
+  resources :users
 end

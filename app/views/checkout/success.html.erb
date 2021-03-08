@@ -1,0 +1,5 @@
+<div class="container text-center my-5">
+  <h1>Payment confirmed</h1>
+  <p>We have received your payment of <%= number_to_currency(@payment_intent.amount_received / 100.0, unit: "€", separator: ",", delimiter: "", format: "%n %u") %>.</p>
+  <p>Your payment status is <%= @payment_intent.status %>.</p>
+</div>

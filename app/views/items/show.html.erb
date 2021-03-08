@@ -1,7 +1,7 @@
 <div class="container">
   <div class="card">
     <div class="card-body">
-      <h2 class="card-title">Items <%= @item.title %></h2>
+      <h2 class="card-title"><%= @item.title %></h2>
       <img src="<%= @item.image_url %>" class="card-img-top" alt="Image <%= @item.id %>">
       <p class="card-text"><%= @item.description %></p>
       <p class="card-text">Price: <%= @item.price %>€</p>

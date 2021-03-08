@@ -1,4 +1,5 @@
 <div class="container text-center my-5">
   <h1>Payment failed</h1>
   <p>Your payment status is <%= @payment_intent.status %>.</p>
+  <%= link_to "Back to Home", root_path, class: "btn btn-block btn-secondary" %>
 </div>

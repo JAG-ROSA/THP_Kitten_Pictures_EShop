@@ -1,6 +1,7 @@
 <%= render "devise/shared/error_messages", resource: resource %>
 
-<div class="container vertical-center" id="registration">
+<div class="container vertical-center col-md-8" id="registration">
+
 	<div class="form-container sign-up-container">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "form") do |f| %>
 

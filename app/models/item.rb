@@ -4,4 +4,7 @@ class Item < ApplicationRecord
   validates :price, presence: true
   validates_inclusion_of :price, in: 0..1000
   validates :image_url, presence: true
+
+  #item has one picture file
+  has_one_attached :image
 end

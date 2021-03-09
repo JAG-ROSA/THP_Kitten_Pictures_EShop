@@ -20,6 +20,10 @@ class CartsController < ApplicationController
     end
   end
 
+  def update
+    
+  end
+
   private
 
   def authenticate_user

@@ -8,7 +8,7 @@ class CartsController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @cart = Cart.where(user_id: @user)
+    Cart.where(user_id: @user)
   end
 
   private
@@ -16,7 +16,7 @@ class CartsController < ApplicationController
   def authenticate_user
     unless current_user 
       flash[:danger] = "This section requires to be logged-in. Please log in."
-      redirect_to "/"
+      redirect_to new_user_registration_path
     end
   end
 

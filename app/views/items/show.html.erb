@@ -13,7 +13,7 @@
       <% else %>
         <%= link_to "Add to cart", new_user_registration_path, class: "btn btn-danger mt-3", method: "GET" %>
       <% end %>
-      <a href="#" class="btn btn-secondary">Return to list</a>
+      <%= link_to "Return to list", items_path, class: "btn btn-secondary" %>
     </div>
   </div>
 </div>

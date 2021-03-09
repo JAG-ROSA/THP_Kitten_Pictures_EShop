@@ -6,24 +6,32 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = helpers.current_user
   end
 
   def create
   end
 
   def show
-    @users = User.all.find_by(id: params[:id])
+    @user = helpers.current_user
+  end
+
+  def update_params
+    params.permit(:first_name, :last_name, :avatar)
   end
 
   def update
-    @user = User.find_by(id: params[:id])
-    post_params = params.permit(:first_name, :last_name, :avatar)
+    @user = helpers.current_user
+    @user.first_name = update_params[:first_name]
+    @user.last_name = update_params[:last_name]
+    @user.avatar = update_params[:avatar]
 
-    if @user.update(post_params)
-      redirect_to root_path, success: "User profile updated!"
+    if @user.save
+      redirect_to user_path(@user.id)
+      flash[:success] = "Your information have been udpated."
     else
-      redirect_to root_path, danger: "Can't update user profile" + @user.errors.full_messages.join(" ")
+      flash[:danger] = "Echec : " + @user.errors.full_messages.join(" ")
+      render :edit
     end
   end
 

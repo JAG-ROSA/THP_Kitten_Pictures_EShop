@@ -6,7 +6,13 @@
       <p class="card-text"><%= @item.description %></p>
       <p class="card-text">Price: <%= @item.price %>€</p>
       <hr>
-      <%= link_to "Add to cart", cart_path(@cart_item.id), method: :post, class: "nav-link" %>
+      <% if user_signed_in?%>
+        <%= form_tag url_for(action: 'update'), method: "patch" do %>
+          <%= submit_tag "Add to cart", class:"btn btn-danger mt-3 "%>
+        <% end %>
+      <% else %>
+        <%= link_to "Add to cart", new_user_registration_path, class: "btn btn-danger mt-3", method: "GET" %>
+      <% end %>
       <a href="#" class="btn btn-secondary">Return to list</a>
     </div>
   </div>

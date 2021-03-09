@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
   root 'items#index'
-  devise_for :users, :skip => [:sessions]
-  as :user do
-      post "/users/sign_in" => "devise/sessions#create", :as => :user_session
-      delete "/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
-  end
+  devise_for :users
   resources :items, only: [:show, :index, :update], path: "kittens"
   resources :users, only: [:show, :update, :edit], path: "profile"
   resources :carts, only: [:show, :update, :destroy, :create], path: "my_cart"

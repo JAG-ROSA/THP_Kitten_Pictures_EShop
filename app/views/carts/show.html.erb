@@ -4,13 +4,14 @@
     <table class="table">
       <thead>
           <tr>
-          <th scope="col">Product</th>
+          <th scope="col" colspan="2">Product</th>
           <th scope="col">Price</th>
           <th scope="col"></th>
         </tr>
       </thead>
       <% @cart.items.each do |item| %>
         <tr>
+          <td class="w-25"><img src="<%= item.image_url %>" class="w-100" alt="Image <%= item.id %>"></td>
           <td><%= item.title %></td>
           <td class="w-25"><%= number_to_currency(item.price, unit: "€", separator: ",", delimiter: "", format: "%n %u") %></td>
           <td class="text-center w-25">
@@ -19,7 +20,7 @@
         </tr>
       <% end %>
       <tr>
-        <th scope="row">Total</th>
+        <th scope="row" colspan="2">Total</th>
         <td colspan="2"><strong><%= number_to_currency(@cart.total, unit: "€", separator: ",", delimiter: "", format: "%n %u") %></strong></td>
       </tr>
     </table>

@@ -23,8 +23,9 @@ class CheckoutController < ApplicationController
   def success
     @session = Stripe::Checkout::Session.retrieve(params[:session_id])
     @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
-    Cart.all.where(user_id:current_user.id).destroy_all
-    Cart.create(user_id:current_user.id)
+    @cart_id = Cart.all.where(user_id:current_user.id)
+    Order.create(cart_id: @cart_id.first.id, amount: @cart_id.first.total)
+    CartItem.all.where(cart_id: @cart_id).destroy_all
   end
 
   def cancel

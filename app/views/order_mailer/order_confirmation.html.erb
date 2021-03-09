@@ -8,10 +8,16 @@
 <body>
   <h1>Hello <%= @user.first_name %>!</h1>
   <p>You've just placed an order with The Kitten Project.</p>
+  <p>We have received your payment of <%= number_to_currency(@order.amount, unit: "€", separator: ",", delimiter: "", format: "%n %u") %>.</p>
   <p>Please find the picture(s) you bought below:</p>
-  <% @order.items.each do |item| %>
-    <%= item.title %>
-    <img src="<%= item.image_url %>" class="w-100" alt="Image <%= item.id %>">
+  <br/>
+  <% @order.cart.items.each do |item| %>
+    <h3><%= item.title %></h3>
+    <p><%= number_to_currency(item.price, unit: "€", separator: ",", delimiter: "", format: "%n %u") %></p>
+    <br/>
+    <img src="<%= item.image_url %>" style="height:400px" alt="Image <%= item.id %>">
+    <br/>
+    <br/>
   <% end %>
 </body>
 </html>

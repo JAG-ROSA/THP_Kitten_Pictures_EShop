@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <h1>Hi TKP Administrator!</h1>
+  <p>An order has just been placed with The Kitten Project.</p>
+  <p>The details of the order are as follows:</p>
+  <ul>
+    <li>Customer n°<%= @user.id %></li>
+    <li>Customer email: <%= @user.email %></li>
+    <li>Amount paid: <%= number_to_currency(@order.amount, unit: "€", separator: ",", delimiter: "", format: "%n %u") %></li>
+    <li>Items ordered:
+      <ul>
+        <% @order.cart.items.each do |item| %>
+          <li><%= item.title %> -- <%= number_to_currency(item.price, unit: "€", separator: ",", delimiter: "", format: "%n %u") %></li>
+        <% end %>
+      </ul>
+    </li>
+  </ul>
+</body>
+</html>

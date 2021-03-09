@@ -6,7 +6,7 @@
     <div class="card-body">
       <h4 class="card-title text-primary"><%= item.title%></h4>
       <p class="card-text text-secondary"><%= item.description%></p>
-      <button class="btn btn-primary"><%= link_to "More about the item",item_path(item.id)%> </button>
+      <%= link_to "More about the item",item_path(item.id), class:"btn btn-primary"%>
     </div>
   </div>
 </div>

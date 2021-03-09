@@ -6,9 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <h1>Hello <%= @user.name %>!</h1>
+  <h1>Hello <%= @user.first_name %>!</h1>
   <p>You've just placed an order with The Kitten Project.</p>
   <p>Please find the picture(s) you bought below:</p>
-  <!-- Compléter une fois que la table Order sera en place -->
+  <% @order.items.each do |item| %>
+    <%= item.title %>
+    <img src="<%= item.image_url %>" class="w-100" alt="Image <%= item.id %>">
+  <% end %>
 </body>
 </html>

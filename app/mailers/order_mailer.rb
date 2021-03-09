@@ -1,7 +1,7 @@
 class OrderMailer < ApplicationMailer
   def order_confirmation(order)
     @order = order
-    @user = order.user #à voir correspondance avec la table Order quand elle sera créée
+    @user = User.find(order.cart.user_id)
     mail(to: @user.email, subject: 'Your KittenProject Order') 
   end
 end

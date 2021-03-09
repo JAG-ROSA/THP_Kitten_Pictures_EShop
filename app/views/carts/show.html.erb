@@ -1,0 +1,20 @@
+<div class="container pt-5 mt-5">
+  <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">Product</th>
+        <th scope="col">Price</th>
+      </tr>
+    </thead>
+    <% @cart.items.each do |item| %>
+      <tr>
+        <td><%= item.title %></td>
+        <td><%= number_to_currency(item.price, unit: "€", separator: ",", delimiter: "", format: "%n %u") %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <th scope="row">Total</th>
+      <td><%= number_to_currency(@cart.total, unit: "€", separator: ",", delimiter: "", format: "%n %u") %></td>
+    </tr>
+  </table>
+</div>

@@ -20,7 +20,7 @@
       </tr>
     </table>
     <% if @cart.total.to_d > 1 %>
-      <%= button_to "Checkout", checkout_create_path(total: @cart.total), class: "btn btn-primary my-3", remote: true %>
+      <%= button_to "Checkout", checkout_create_path(total: @cart.total), class: "btn btn-primary float-right my-3 px-5", remote: true %>
     <% end %>
     <% else %>
     <div id="yarn-ball">    

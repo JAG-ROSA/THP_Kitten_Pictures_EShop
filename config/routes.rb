@@ -5,9 +5,9 @@ Rails.application.routes.draw do
       post "/users/sign_in" => "devise/sessions#create", :as => :user_session
       delete "/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
   end
-  resources :items
-  resources :users
-  resources :carts
+  resources :items, only: [:show, :index, :update], path: "kittens"
+  resources :users, only: [:show, :update, :edit], path: "profil"
+  resources :carts, only: [:show, :update, :destroy], path: "my_cart"
   resources :cart_items
 
   # Routes Stripe Checkout

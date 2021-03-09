@@ -7,14 +7,14 @@ CartItem.destroy_all
 Order.destroy_all
 OrderItem.destroy_all
 
-5.times do |index|
-  User.create!(
+5.times do
+  new_user = User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     email: Faker::Name.first_name + "@yopmail.com",
     password: "azerty",
   )
-  Cart.create!(user_id: index + 1)
+  Cart.create!(user_id: new_user.id)
   puts "Create User and Cart"
 end
 
@@ -30,12 +30,15 @@ end
 
 10.times do
   CartItem.create!(cart: Cart.all.sample, item: Item.all.sample)
-  puts "Create Cart Item"
+  puts "Put Item in Cart"
 end
 
 3.times do
-  Order.create!(cart: Cart.all.sample, amount: rand(1.0..1000.0).round(2))
+  cart_ordered = Cart.all.sample
+  new_order = Order.create!(cart: cart_ordered, amount: cart_ordered.total)
   puts "Create Order"
-  OrderItem.create!(order: Order.all.sample, item: Item.all.sample)
-  puts "Create Order Item"
+  new_order.cart.items.each do |item|
+    OrderItem.create!(order: new_order, item: item)
+    puts "Register Order Items"
+  end
 end

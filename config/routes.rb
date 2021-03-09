@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'items#index'
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :items, only: [:show, :index, :update], path: "kittens"
   resources :users, only: [:show, :update, :edit], path: "profile"
   resources :carts, only: [:show, :update, :destroy, :create], path: "my_cart"

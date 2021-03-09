@@ -7,12 +7,6 @@
         <p>First name : <%= @user.first_name %></p>
         <p>Last name : <%= @user.last_name %></p>
         <p>Email address : <%= @user.email %></p>
-
-        <div class="text-center">
-          <%= link_to "Update your profile information", edit_user_path(@user.id), class: "btn btn-primary w-50"%>
-        </div>
-
-
       </div>
 
     <% else %>
@@ -21,9 +15,6 @@
         <p>First name : to be defined</p>
         <p>Last name : to be defined</p>
         <p>Email address : <%= @user.email %></p>
-        <div class="text-center">
-          <%= link_to "Complete your profile information", edit_user_path(@user.id), class: "btn btn-primary w-50"%>
-        </div>
       </div>
     <% end %>
 
@@ -32,13 +23,14 @@
         <summary>View all previous orders</summary>
         <ul class="list-group">
           <% @orders.each do |order| %>
-            <li class="list-group-item p-1 pl-3">
-              <%= order.id %>
-            </li>
+            <%= render partial: "orders", locals: {order: order} %>
           <% end %>
         </ul>
       </details>
     <% end %>
 
+    <div class="text-center mb-2">
+      <%= link_to "Update your profile information", edit_user_path(@user.id), class: "btn btn-primary w-50"%>
+    </div>
   </div>
 </div>

@@ -1,0 +1,18 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Content</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"><%= order.id %></th>
+      <% order.items.each do |item| %>
+        <td><%= item%></td>
+      <% end%>
+      <td><%= order.created_at %></td>
+    </tr>
+  </tbody>
+</table>

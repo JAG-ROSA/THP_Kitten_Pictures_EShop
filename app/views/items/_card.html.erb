@@ -12,7 +12,7 @@
           <%= submit_tag "Add to cart", class:"btn btn-danger mt-3 "%>
         <% end %>
       <% else %>
-        <%= link_to "Add to cart", new_user_registration_path, class: "btn btn-danger mt-3", method: "GET" %>
+        <%= link_to "Add to cart", user_session_path, class: "btn btn-danger mt-3", method: "GET" %>
       <% end %>
     </div>
   </div>

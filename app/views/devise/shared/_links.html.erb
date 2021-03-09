@@ -9,7 +9,7 @@
 <%# end %>
 
 
-<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'sessions' %>
+<%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
   <%= link_to "Forgot your password?", new_password_path(resource_name), style: "
 	color: #333;
 	font-size: 14px;

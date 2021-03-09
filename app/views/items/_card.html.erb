@@ -1,0 +1,13 @@
+<%# a simple card with image, title and description %>
+<div class="col-md-4 pb-4 d-flex justify-content-center">
+  <div class="card text-white border-primary text-center" >
+    <div class="card-header bg-primary"><%= item.title%></div>
+    <img class="card-img-top" src="<%= item.image_url %>" alt="card-<%= item.title%>-image">
+    <div class="card-body">
+      <h4 class="card-title text-primary"><%= item.title%></h4>
+      <p class="card-text text-secondary"><%= item.description%></p>
+      <%= link_to "More about the item",item_path(item.id), class:"btn btn-primary"%>
+    </div>
+  </div>
+</div>
+

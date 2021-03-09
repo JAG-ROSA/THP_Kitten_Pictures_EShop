@@ -1,2 +1,13 @@
-<h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+<div class="container pt-5 mt-5">
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title"><%= @item.title %></h2>
+      <img src="<%= @item.image_url %>" class="card-img-top" alt="Image <%= @item.id %>">
+      <p class="card-text"><%= @item.description %></p>
+      <p class="card-text">Price: <%= @item.price %>€</p>
+      <hr>
+      <a href="#" class="btn btn-primary">Add to cart</a>
+      <a href="#" class="btn btn-secondary">Return to list</a>
+    </div>
+  </div>
+</div>

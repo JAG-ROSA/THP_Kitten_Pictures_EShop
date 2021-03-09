@@ -1,3 +1,42 @@
 // Place all the styles related to the Items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.jumobtron-container{
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.backg-img-main{
+  height: 500px;
+  width: 100%;
+  opacity: 0.5;
+}
+
+.ml6 {
+  position: relative;
+  font-weight: 900;
+  font-size: 4vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ml6 .text-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-top: 0.2em;
+  padding-right: 0.05em;
+  padding-bottom: 0.1em;
+  overflow: hidden;
+  
+}
+
+.ml6 .letter {
+  display: inline-block;
+  line-height: 1em;
+}
+
+.centered {
+  position: absolute;
+  
+}

@@ -4,6 +4,8 @@ User.destroy_all
 Item.destroy_all
 Cart.destroy_all
 CartItem.destroy_all
+Order.destroy_all
+OrderItem.destroy_all
 
 5.times do |index|
   User.create!(
@@ -29,4 +31,11 @@ end
 10.times do
   CartItem.create!(cart: Cart.all.sample, item: Item.all.sample)
   puts "Create Cart Item"
+end
+
+3.times do
+  Order.create!(cart: Cart.all.sample, amount: rand(1.0..1000.0).round(2))
+  puts "Create Order"
+  OrderItem.create!(order: Order.all.sample, item: Item.all.sample)
+  puts "Create Order Item"
 end

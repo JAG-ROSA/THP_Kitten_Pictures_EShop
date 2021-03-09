@@ -2,6 +2,9 @@ class Item < ApplicationRecord
   has_many :cart_items
   has_many :carts, through: :cart_items
 
+  has_many :order_items
+  has_many :orders, through: :order_items
+
   validates :title, presence: true, length: { in: 1..100 }
   validates :description, presence: true, length: { in: 20..500 }
   validates :price, presence: true

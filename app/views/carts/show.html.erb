@@ -4,18 +4,21 @@
     <table class="table">
       <thead>
           <tr>
-          <th scope="col">Product</th>
+          <th scope="col" colspan="2">Product</th>
           <th scope="col">Price</th>
         </tr>
       </thead>
       <% @cart.items.each do |item| %>
         <tr>
           <td><%= item.title %></td>
+          <td>
+              <%= link_to "Supprimer cet article", cart_item_path(id: cart_item_id(@cart, item)), method: "delete", class: "btn btn-danger" %>
+          </td>
           <td><%= number_to_currency(item.price, unit: "€", separator: ",", delimiter: "", format: "%n %u") %></td>
         </tr>
       <% end %>
       <tr>
-        <th scope="row">Total</th>
+        <th scope="row" colspan="2">Total</th>
         <td><%= number_to_currency(@cart.total, unit: "€", separator: ",", delimiter: "", format: "%n %u") %></td>
       </tr>
     </table>

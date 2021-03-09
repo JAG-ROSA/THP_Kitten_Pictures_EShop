@@ -7,7 +7,7 @@ class CartsController < ApplicationController
   end
 
   def show
-    @cart = Cart.find(params[:id])
+    @cart = Cart.where(user_id: params[:id])
   end
 
   private

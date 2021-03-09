@@ -28,7 +28,7 @@ class ItemsController < ApplicationController
       end
     else
       flash[:danger] = "Item already added to the cart"
-      redirect_to action: 'show'
+      redirect_back(fallback_location: root_path)
     end
   end
 

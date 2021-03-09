@@ -1,8 +1,35 @@
 <div class="container pt-5 mt-5">
-  <% if @user.first_name != nil %>
-    <h1>Welcome <%= @user.first_name %></h1>
-  <% else %>
-    <h1>Profile</h1>
-  <% end %>
-  <p>Find me in app/views/users/show.html.erb</p>
+  <div class="card d-flex justify-content-center">
+
+    <% if @user.first_name != nil && @user.last_name != nil %>
+      <h1 class="card-title text-center">Welcome <%= @user.full_name %></h1>
+      <div class="card-body">
+        <p>First name : <%= @user.first_name %></p>
+        <p>Last name : <%= @user.last_name %></p>
+        <p>Email address : <%= @user.email %></p>
+        
+        <div class="text-center">
+          <%= link_to "Update your profile information", edit_user_path(@user.id), class: "btn btn-primary w-50"%>
+        </div>
+
+
+        <details closed="closed">
+          <summary>View all previous orders</summary>
+          <ul class="list-group">
+            <!-- on pourra indiquer ici la liste des commandes si l'utilisateur en a déjà passé -->
+          </ul>
+        </details>
+      </div>
+
+    <% else %>
+      <div class="card-body">
+        <h1 class="card-title">Profile</h1>
+        <p>First name : to be defined</p>
+        <p>Last name : to be defined</p>
+        <p>Email address : <%= @user.email %></p>
+        <%= link_to "Complete your profile information", edit_user_path(@user.id), class: "btn btn-primary w-50"%>
+      </div>
+    <% end %>
+
+  </div>
 </div>

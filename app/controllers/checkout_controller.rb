@@ -24,7 +24,10 @@ class CheckoutController < ApplicationController
     @session = Stripe::Checkout::Session.retrieve(params[:session_id])
     @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
     @cart_id = Cart.all.where(user_id:current_user.id)
-    Order.create(cart_id: @cart_id.first.id, amount: @cart_id.first.total)
+    new_order = Order.create(cart_id: @cart_id.first.id, amount: @cart_id.first.total)
+    new_order.cart.items.each do |item|
+      OrderItem.create!(order: new_order, item: item)
+    end
     CartItem.all.where(cart_id: @cart_id).destroy_all
   end
 

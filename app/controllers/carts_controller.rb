@@ -15,9 +15,9 @@ class CartsController < ApplicationController
     if @cart.save
       flash[:success] = "Cart created"
       redirect_to controller:'carts', action: 'show', id: @cart.id
-  else
-    render root_path
-  end
+    else
+      render root_path
+    end
   end
 
   private

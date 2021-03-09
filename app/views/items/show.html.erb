@@ -6,7 +6,7 @@
       <p class="card-text"><%= @item.description %></p>
       <p class="card-text">Price: <%= @item.price %>€</p>
       <hr>
-      <a href="#" class="btn btn-primary">Add to cart</a>
+      <%= link_to "Add to cart", cart_path(@cart_item.id), method: :post, class: "nav-link" %>
       <a href="#" class="btn btn-secondary">Return to list</a>
     </div>
   </div>

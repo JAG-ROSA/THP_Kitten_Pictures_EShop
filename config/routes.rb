@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :items
   resources :users
   resources :carts
+  resources :cart_items
 
   # Routes Stripe Checkout
   scope '/checkout' do

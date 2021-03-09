@@ -6,7 +6,7 @@ class CheckoutController < ApplicationController
       payment_method_types: ["card"],
       line_items: [
         {
-          name: "Rails Stripe Checkout",
+          name: "The Kitten Project Stripe Checkout",
           amount: (@total * 100).to_i,
           currency: "eur",
           quantity: 1,

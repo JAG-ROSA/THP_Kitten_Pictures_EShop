@@ -7,6 +7,13 @@
       <h4 class="card-title text-primary"><%= item.title%></h4>
       <p class="card-text text-secondary"><%= item.description%></p>
       <%= link_to "More about the item",item_path(item.id), class:"btn btn-primary"%>
+      <% if user_signed_in?%>
+        <%= form_tag url_for(item_path(item.id)), method: "patch" do %>
+          <%= submit_tag "Add to cart", class:"btn btn-danger mt-3 "%>
+        <% end %>
+      <% else %>
+        <%= link_to "Add to cart", user_session_path, class: "btn btn-danger mt-3", method: "GET" %>
+      <% end %>
     </div>
   </div>
 </div>

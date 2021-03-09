@@ -7,18 +7,23 @@
         <p>First name : <%= @user.first_name %></p>
         <p>Last name : <%= @user.last_name %></p>
         <p>Email address : <%= @user.email %></p>
-        
+
         <div class="text-center">
           <%= link_to "Update your profile information", edit_user_path(@user.id), class: "btn btn-primary w-50"%>
         </div>
 
-
+        <% if @orders != nil %>
         <details closed="closed">
           <summary>View all previous orders</summary>
           <ul class="list-group">
-            <!-- on pourra indiquer ici la liste des commandes si l'utilisateur en a déjà passé -->
+            <% @orders.each do |order| %>
+              <li class="list-group-item p-1 pl-3">
+                <%= order.id %>
+              </li>
+            <% end %>
           </ul>
         </details>
+        <% end %>
       </div>
 
     <% else %>

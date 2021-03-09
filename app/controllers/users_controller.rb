@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = helpers.current_user
+    @orders = @user.orders
   end
 
   def create

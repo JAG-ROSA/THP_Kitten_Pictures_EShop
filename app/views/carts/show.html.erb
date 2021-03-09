@@ -4,26 +4,29 @@
     <table class="table">
       <thead>
           <tr>
-          <th scope="col" colspan="2">Product</th>
+          <th scope="col">Product</th>
           <th scope="col">Price</th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <% @cart.items.each do |item| %>
         <tr>
           <td><%= item.title %></td>
-          <td>
-              <%= link_to "Supprimer cet article", cart_item_path(id: cart_item_id(@cart, item)), method: "delete", class: "btn btn-danger" %>
+          <td class="w-25"><%= number_to_currency(item.price, unit: "€", separator: ",", delimiter: "", format: "%n %u") %></td>
+          <td class="text-center w-25">
+            <%= link_to "Delete product", cart_item_path(id: cart_item_id(@cart, item)), method: "delete", class: "btn btn-sm btn-danger" %>
           </td>
-          <td><%= number_to_currency(item.price, unit: "€", separator: ",", delimiter: "", format: "%n %u") %></td>
         </tr>
       <% end %>
       <tr>
-        <th scope="row" colspan="2">Total</th>
-        <td><%= number_to_currency(@cart.total, unit: "€", separator: ",", delimiter: "", format: "%n %u") %></td>
+        <th scope="row">Total</th>
+        <td colspan="2"><strong><%= number_to_currency(@cart.total, unit: "€", separator: ",", delimiter: "", format: "%n %u") %></strong></td>
       </tr>
     </table>
     <% if @cart.total.to_d > 1 %>
-      <%= button_to "Checkout", checkout_create_path(total: @cart.total), class: "btn btn-primary float-right my-3 px-5", remote: true %>
+      <div class="col-md-8 mx-auto text-center py-4">
+        <%= button_to "Checkout", checkout_create_path(total: @cart.total), class: "btn btn-primary float-right my-3 btn-block", remote: true %>
+      </div>
     <% end %>
     <% else %>
     <div id="yarn-ball">    

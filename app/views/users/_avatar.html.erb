@@ -1,12 +1,14 @@
-<%if @users.avatar.attached?%>
-    <%= image_tag @users.avatar, alt: 'avatar' %>
-    
+<div class="container">
+  <%if @users.avatar.attached?%>
+    <%= image_tag @users.avatar, alt: 'avatar', class: "rounded-circle" %>    
   <%else%>
-    <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>
-  <%end%>
+    <p>=== Still no user avatar ===</p>
+  <%end%><br>
 
-  <h3>Changer d'avatar ?</h3>
+  <h3>Want to change your avatar?</h3>
   <%= form_tag user_avatars_path(@users), multipart: true do %>
     <%= file_field_tag :avatar %>
-    <%= submit_tag "mettre à jour" %>
+    <%= submit_tag "Update Avatar" %>
   <% end %>
+
+</div>

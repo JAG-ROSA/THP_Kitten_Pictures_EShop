@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
   resources :items, only: [:show, :index, :update], path: "kittens"
   resources :users, only: [:show, :update, :edit], path: "profil"
-  resources :carts, only: [:show, :update, :destroy], path: "my_cart"
+  resources :carts, only: [:show, :update, :destroy, :create], path: "my_cart"
   resources :cart_items
 
   # Routes Stripe Checkout

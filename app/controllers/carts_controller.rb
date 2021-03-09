@@ -7,7 +7,17 @@ class CartsController < ApplicationController
   end
 
   def show
-    @cart = Cart.where(user_id: params[:id]).first
+    @cart = Cart.find(params[:id])
+  end
+
+  def create
+    @cart = Cart.new(user_id: current_user.id)
+    if @cart.save
+      flash[:success] = "Cart created"
+      redirect_to controller:'carts', action: 'show', id: @cart.id
+  else
+    render root_path
+  end
   end
 
   private
@@ -20,8 +30,9 @@ class CartsController < ApplicationController
   end
 
   def is_owner
-    if current_user.id.to_i != params[:id].to_i
+    if Cart.where(user_id: current_user.id).first.id.to_i != params[:id].to_i
       redirect_to "/"
     end
   end
+  
 end

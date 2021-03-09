@@ -6,7 +6,7 @@ class CheckoutController < ApplicationController
       payment_method_types: ["card"],
       line_items: [
         {
-          name: "Rails Stripe Checkout",
+          name: "The Kitten Project Stripe Checkout",
           amount: (@total * 100).to_i,
           currency: "eur",
           quantity: 1,
@@ -23,6 +23,8 @@ class CheckoutController < ApplicationController
   def success
     @session = Stripe::Checkout::Session.retrieve(params[:session_id])
     @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
+    Cart.all.where(user_id:current_user.id).destroy_all
+    Cart.create(user_id:current_user.id)
   end
 
   def cancel

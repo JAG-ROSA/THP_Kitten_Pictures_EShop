@@ -19,7 +19,7 @@ OrderItem.destroy_all
 end
 
 
-20.times do |index|
+6.times do |index|
   item = Item.create!(
     title: Faker::Creature::Cat.breed,
     description: Faker::Lorem.sentence(word_count: 8),

@@ -3,12 +3,17 @@
     <div class="card-body">
       <h2 class="card-title"><%= @item.title %></h2>
       <img src="<%= @item.image_url %>" class="card-img-top" alt="Image <%= @item.id %>">
+      <div class="py-3">
+        <% @item.categories.each do |category| %>
+          <span class="badge badge-success"><%= category.label %></span>
+        <% end %>
+      </div>
       <p class="card-text"><%= @item.description %></p>
       <p class="card-text">Price: <%= @item.price %>€</p>
       <hr>
-      <% if user_signed_in?%>
-        <%= form_tag url_for(action: 'update'), method: "patch" do %>
-          <%= submit_tag "Add to cart", class:"btn btn-danger mt-3 "%>
+      <% if user_signed_in? %>
+        <%= form_tag url_for(action: "update"), method: "patch" do %>
+          <%= submit_tag "Add to cart", class: "btn btn-danger mt-3 " %>
         <% end %>
       <% else %>
         <%= link_to "Add to cart", user_session_path, class: "btn btn-danger mt-3", method: "GET" %>

@@ -1,18 +1,28 @@
+<summary>View all previous orders</summary>
+
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
+      <th scope="col">Order ID</th>
       <th scope="col">Content</th>
+      <th scope="col">Total Amount</th>
       <th scope="col">Date</th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <% orders.each do |order| %>
       <th scope="row"><%= order.id %></th>
-      <% order.items.each do |item| %>
-        <td><%= item%></td>
-      <% end%>
+        <td>
+          <% order.items.each do |item| %>
+            <ul>
+              <li><%= item.title %>, <%= item.price %>€</li>
+            </ul>
+          <% end%>
+        </td>
+      <td><%= order.amount %>€</td>
       <td><%= order.created_at %></td>
+      <% end %>
     </tr>
   </tbody>
 </table>

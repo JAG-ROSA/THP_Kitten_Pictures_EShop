@@ -1,7 +1,6 @@
 class Cart < ApplicationRecord
   has_one :user
 
-
   has_many :orders
 
   has_many :cart_items
@@ -15,5 +14,3 @@ class Cart < ApplicationRecord
     return total
   end
 end
-
-

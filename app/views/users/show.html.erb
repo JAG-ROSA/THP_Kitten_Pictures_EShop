@@ -18,14 +18,9 @@
       </div>
     <% end %>
 
-    <% if @orders != nil %>
+    <% if @orders.any? %>
       <details closed="closed">
-        <summary>View all previous orders</summary>
-        <ul class="list-group">
-          <% @orders.each do |order| %>
-            <%= render partial: "orders", locals: {order: order} %>
-          <% end %>
-        </ul>
+        <%= render partial: "orders", locals: {orders: @orders} %>
       </details>
     <% end %>
 

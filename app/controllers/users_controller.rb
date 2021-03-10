@@ -7,7 +7,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = helpers.current_user
-    @orders = @user.orders
   end
 
   def create
@@ -15,6 +14,7 @@ class UsersController < ApplicationController
 
   def show
     @user = helpers.current_user
+    @orders = @user.orders
   end
 
   def update_params

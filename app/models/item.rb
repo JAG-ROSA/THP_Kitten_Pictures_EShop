@@ -5,6 +5,9 @@ class Item < ApplicationRecord
   has_many :order_items
   has_many :orders, through: :order_items
 
+  has_many :category_items
+  has_many :categories, through: :category_items
+
   validates :title, presence: true, length: { in: 1..100 }
   validates :description, presence: true, length: { in: 20..500 }
   validates :price, presence: true

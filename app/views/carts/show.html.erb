@@ -17,16 +17,22 @@
           <tr>
           <th scope="col" colspan="2">Product</th>
           <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
           <th scope="col"></th>
         </tr>
       </thead>
-      <% @cart.items.each do |item| %>
+      <% @cart.cart_items.each do |cart_item| %>
         <tr>
-          <td class="w-25"><img src="<%= item.image_url %>" class="w-100" alt="Image <%= item.id %>"></td>
-          <td><%= item.title %></td>
-          <td class="w-25"><%= number_to_currency(item.price, unit: "€", separator: ",", delimiter: "", format: "%n %u") %></td>
+          <td class="w-25"><img src="<%= cart_item.item.image_url %>" class="w-100" alt="Image <%= cart_item.item.id %>"></td>
+          <td><%= cart_item.item.title %></td>
+          <td class="w-25"><%= number_to_currency(cart_item.item.price, unit: "€", separator: ",", delimiter: "", format: "%n %u") %></td>
+          <td>
+            <%= cart_item.quantity %>
+            <%= link_to "+", cart_item_add_path(id: cart_item), method: :post, class: "btn btn-sm btn-success" %>
+            <%= link_to "-", cart_item_reduce_path(id: cart_item), method: :post, class: "btn btn-sm btn-danger" %>
+          </td>
           <td class="text-center w-25">
-            <%= link_to "Delete product", cart_item_path(id: cart_item_id(@cart, item)), method: "delete", class: "btn btn-sm btn-danger" %>
+            <%= link_to "Delete product", cart_item_path(cart_item), method: "delete", class: "btn btn-sm btn-danger" %>
           </td>
         </tr>
       <% end %>

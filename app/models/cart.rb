@@ -5,11 +5,7 @@ class Cart < ApplicationRecord
   has_many :orders
 
   def total
-    total = 0
-    self.items.each do |item|
-      total += item.price
-    end
-    return total
+    return self.items.pluck(:price).sum
   end
 end
 

@@ -17,13 +17,14 @@ class UsersController < ApplicationController
   end
 
   def update_params
-    params.permit(:first_name, :last_name)
+    params.permit(:first_name, :last_name, :avatar)
   end
 
   def update
     @user = helpers.current_user
     @user.first_name = update_params[:first_name]
     @user.last_name = update_params[:last_name]
+    @user.avatar = update_params[:avatar]
 
     if @user.save
       redirect_to user_path(@user.id)

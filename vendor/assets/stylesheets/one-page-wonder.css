@@ -158,3 +158,8 @@ header.masthead .bg-circle-4 {
 .btn-secondary:focus {
   box-shadow: 0 0 0 0.2rem #b15517;
 }
+
+i:hover {
+  color: #dc3545;
+  cursor: pointer;
+}

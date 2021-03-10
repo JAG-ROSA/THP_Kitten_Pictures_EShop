@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
   def index
     @items = Item.all
-    
   end
 
   def new
@@ -22,9 +21,9 @@ class ItemsController < ApplicationController
     if !@cart_item
       if @new_item.save
         flash[:success] = "Item added to the cart"
-        redirect_to controller:'carts', action: 'show', id: @cart.id
+        redirect_back(fallback_location: root_path)
       else
-        render action: 'show'
+        render action: "show"
       end
     else
       flash[:danger] = "Item already added to the cart"

@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
   # User can have one avatar file
   has_one_attached :avatar
+
   def full_name
     full_name = self.first_name + " " + self.last_name
     return full_name

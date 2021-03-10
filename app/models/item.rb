@@ -16,4 +16,8 @@ class Item < ApplicationRecord
 
   #item has one picture file
   has_one_attached :image
+
+  def category_classes
+    return self.categories.pluck(:id).map{|el| el.to_s.prepend("group-")}.join(" ")
+  end
 end

@@ -29,9 +29,9 @@ class UsersController < ApplicationController
 
     if @user.save
       redirect_to user_path(@user.id)
-      flash[:success] = "Your information have been udpated."
+      flash[:success] = "Your information has been udpated."
     else
-      flash[:danger] = "Echec : " + @user.errors.full_messages.join(" ")
+      flash[:danger] = "Failure: " + @user.errors.full_messages.join(" ")
       render :edit
     end
   end

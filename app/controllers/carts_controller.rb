@@ -2,7 +2,6 @@ class CartsController < ApplicationController
 
   include CartsHelper
   
-  before_action :authenticate_user, only: [:show, :edit, :update, :destroy]
   before_action :is_owner, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -29,16 +28,10 @@ class CartsController < ApplicationController
 
   private
 
-  def authenticate_user
-    unless current_user 
-      flash[:danger] = "This section requires to be logged-in. Please log in."
-      redirect_to new_user_registration_path
-    end
-  end
-
   def is_owner
-    if Cart.where(user_id: current_user.id).first.id.to_i != params[:id].to_i
+    if Cart.find(session[:cart_id]).id.to_i != params[:id].to_i
       redirect_to "/"
+      flash[:warning] = "You cannot see other users' carts!"
     end
   end
   

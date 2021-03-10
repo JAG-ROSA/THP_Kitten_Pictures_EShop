@@ -6,6 +6,8 @@ Cart.destroy_all
 CartItem.destroy_all
 Order.destroy_all
 OrderItem.destroy_all
+Category.destroy_all
+CategoryItem.destroy_all
 
 5.times do
   new_user = User.create!(
@@ -18,8 +20,12 @@ OrderItem.destroy_all
   puts "Create User and Cart"
 end
 
+possible_categories = %w(funny cute active mischievous fluffy gorgeous orange black regal sassy unique)
+possible_categories.each do |category_name|
+  Category.create(label:category_name)
+end
 
-20.times do |index|
+10.times do |index|
   item = Item.create!(
     title: Faker::Creature::Cat.breed,
     description: Faker::Lorem.sentence(word_count: 8),
@@ -28,6 +34,7 @@ end
   )
   
   item.image.attach(io: File.open("app/assets/images/kitten_pictures/kitten_#{index+1}.jpg"), filename: "kitten_#{index+1}.jpg")
+  item.categories << Category.all.sample(rand(1..3))
   puts "Create Item"
 end
 

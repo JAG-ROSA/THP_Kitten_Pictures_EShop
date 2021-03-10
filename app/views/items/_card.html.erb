@@ -1,20 +1,19 @@
-<%# a simple card with image, title and description %>
-<div class="col-md-4 pb-4 d-flex justify-content-center">
-  <div class="card text-white border-primary text-center" >
-    <div class="card-header bg-primary"><%= item.title%></div>
-    <%= image_tag item.image, alt: 'image', class: "w-100" %>
+<% # a simple card with image, title and description %>
+  <div class="card mx-3 my-3 text-white border-primary text-center <%= item.category_classes %>" style="width:300px" >
+    <div class="card-header bg-primary"><%= item.title %></div>
+    <%= image_tag item.image, alt: "avatar", class: "card-img-top" %>
     <div class="card-body">
-      <h4 class="card-title text-primary"><%= item.title%></h4>
-      <p class="card-text text-secondary"><%= item.description%></p>
-      <%= link_to "More about the item",item_path(item.id), class:"btn btn-primary"%>
-      <% if user_signed_in?%>
-        <%= form_tag url_for(item_path(item.id)), method: "patch" do %>
-          <%= submit_tag "Add to cart", class:"btn btn-danger mt-3 "%>
+      <h4 class="card-title text-primary"><%= item.title %></h4>
+      <p class="card-text text-secondary"><%= item.description %></p>
+      <div class="py-3">
+        <% item.categories.each do |category| %>
+          <span class="badge badge-success group-<%= category.id %>"><%= category.label %></span>
         <% end %>
-      <% else %>
-        <%= link_to "Add to cart", user_session_path, class: "btn btn-danger mt-3", method: "GET" %>
+      </div>
+      <%= link_to "More about the item", item_path(item.id), class: "btn btn-primary" %>
+      <%= form_tag url_for(item_path(item.id)), method: "patch" do %>
+        <%= submit_tag "Add to cart", class: "btn btn-danger mt-3 " %>
       <% end %>
     </div>
   </div>
-</div>
 

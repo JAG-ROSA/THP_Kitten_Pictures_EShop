@@ -16,7 +16,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @cart = Cart.find_by(user_id: current_user.id)
+    @cart = Cart.find(session[:cart_id])
     @cart_item = CartItem.find_by(cart_id: @cart.id, item_id: params[:id])
     @new_item = CartItem.new(cart_id: @cart.id, item_id: params[:id])
     if !@cart_item

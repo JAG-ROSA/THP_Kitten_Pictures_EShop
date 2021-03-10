@@ -15,7 +15,7 @@
     <h3><%= item.title %></h3>
     <p><%= number_to_currency(item.price, unit: "€", separator: ",", delimiter: "", format: "%n %u") %></p>
     <br/>
-    <img src="<%= item.image_url %>" style="height:400px" alt="Image <%= item.id %>">
+    <%= image_tag item.image, alt: "image", style: "height:400px"%>
     <br/>
     <br/>
   <% end %>

@@ -22,7 +22,7 @@
       </thead>
       <% @cart.items.each do |item| %>
         <tr>
-          <td class="w-25"><img src="<%= item.image_url %>" class="w-100" alt="Image <%= item.id %>"></td>
+          <td class="w-25"><%= image_tag item.image, alt: "image", class: "w-100" %></td>
           <td><%= item.title %></td>
           <td class="w-25"><%= number_to_currency(item.price, unit: "€", separator: ",", delimiter: "", format: "%n %u") %></td>
           <td class="text-center w-25">

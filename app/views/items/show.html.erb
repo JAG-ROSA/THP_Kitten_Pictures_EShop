@@ -16,7 +16,9 @@
           <%= submit_tag "Add to cart", class: "btn btn-danger mt-3 " %>
         <% end %>
       <% else %>
-        <%= link_to "Add to cart", user_session_path, class: "btn btn-danger mt-3", method: "GET" %>
+        <%= form_tag url_for(item_path(@item.id)), method: "patch" do %>
+          <%= submit_tag "Add to cart", class:"btn btn-danger mt-3 "%>
+        <% end %>
       <% end %>
       <%= link_to "Return to list", items_path, class: "btn btn-secondary" %>
     </div>

@@ -31,6 +31,7 @@ class CartsController < ApplicationController
   def is_owner
     if Cart.find(session[:cart_id]).id.to_i != params[:id].to_i
       redirect_to "/"
+      flash[:warning] = "You cannot see other users' carts!"
     end
   end
   

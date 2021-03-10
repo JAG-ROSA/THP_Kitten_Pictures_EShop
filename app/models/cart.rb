@@ -8,5 +8,3 @@ class Cart < ApplicationRecord
     return self.items.pluck(:price).sum
   end
 end
-
-

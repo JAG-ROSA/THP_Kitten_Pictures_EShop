@@ -2,12 +2,12 @@
   <div class="card">
     <div class="card-body">
       <h2 class="card-title"><%= @item.title %></h2>
+      <%= image_tag @item.image, alt: "Image", class: "card-img-top" %>
       <div class="py-3">
         <% @item.categories.each do |category| %>
           <span class="badge badge-success"><%= category.label %></span>
         <% end %>
       </div>
-      <%= image_tag @item.image, alt: "Image", class: "card-img-top" %>
       <p class="card-text"><%= @item.description %></p>
       <p class="card-text">Price: <%= @item.price %>€</p>
       <hr>
@@ -17,7 +17,7 @@
         <% end %>
       <% else %>
         <%= form_tag url_for(item_path(@item.id)), method: "patch" do %>
-          <%= submit_tag "Add to cart", class:"btn btn-danger mt-3 "%>
+          <%= submit_tag "Add to cart", class: "btn btn-danger mt-3 " %>
         <% end %>
       <% end %>
       <%= link_to "Return to list", items_path, class: "btn btn-secondary" %>

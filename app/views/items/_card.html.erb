@@ -12,7 +12,7 @@
       </div>
       <%= link_to "More about the item", item_path(item.id), class: "btn btn-primary" %>
       <%= form_tag url_for(item_path(item.id)), method: "patch" do %>
-        <%= submit_tag "Add to cart", class:"btn btn-danger mt-3 "%>
+        <%= submit_tag "Add to cart", class: "btn btn-danger mt-3 " %>
       <% end %>
     </div>
   </div>

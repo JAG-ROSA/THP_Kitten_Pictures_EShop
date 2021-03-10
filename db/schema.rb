@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 2021_03_09_083621) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
   create_table "cart_items", force: :cascade do |t|
     t.bigint "cart_id"
     t.bigint "item_id"

@@ -1,5 +1,9 @@
-// Update le cart
-document.querySelector("#items-list").insertAdjacentHTML("beforeend", "<%= j render 'new_item_in_cart', item: @new_item.item %>");
-// Afficher le flash
-document.querySelector("#flash").insertAdjacentHTML("beforeend", "<%= j render 'layouts/flash', flash: @flash %>");
-// Afficher la vue avec l'ancre sur l'index
+// Update cart
+document.querySelector(".nav-item.dropdown").innerHTML = "<%= j render partial: 'layouts/cart_navbar', locals: {cart: @cart} %>";
+// Render flash
+var flash = document.querySelector("#flash");
+if(flash.innerHTML == null) {
+  flash.insertAdjacentHTML("beforeend", "<%= j render 'layouts/flash', flash: @flash %>");
+} else {
+  flash.innerHTML ="<%= j render 'layouts/flash', flash: @flash %>";
+};

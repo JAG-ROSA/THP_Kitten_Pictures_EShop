@@ -1,0 +1,9 @@
+// Update cart
+document.querySelector(".nav-item.dropdown").innerHTML = "<%= j render partial: 'layouts/cart_navbar', locals: {cart: @cart} %>";
+// Render flash
+var flash = document.querySelector("#flash");
+if(flash.innerHTML == null) {
+  flash.insertAdjacentHTML("beforeend", "<%= j render 'layouts/flash', flash: @flash %>");
+} else {
+  flash.innerHTML ="<%= j render 'layouts/flash', flash: @flash %>";
+};

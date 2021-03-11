@@ -7,10 +7,15 @@
 
   <div class="dropdown-menu">
     <ol class="pr-2">
-      <% cart.items.each do |item| %>
+      <% @cart_items.each do |cart_item| %>
       <li>
-        <%= item.title %> - <%= item.price %>€
-        <%= link_to cart_item_path(id: cart_item_id(cart, item)), method: "delete", class: "text-dark" do %>
+        
+        
+        <%= cart_item.item.title %> - <%= cart_item.item.price %>€ - <%= cart_item.quantity %>
+        <%= link_to "+", cart_item_add_path(id: cart_item), method: :post, class: "btn btn-sm btn-success" %>
+            <%= link_to "-", cart_item_reduce_path(id: cart_item), method: :post, class: "btn btn-sm btn-danger" %>
+        
+        <%= link_to cart_item_path(id: cart_item_id(cart, cart_item.item)), method: "delete", class: "text-dark" do %>
           <i class="fas fa-trash" style="font-size: 13px"></i>
         <% end %>
       </li>

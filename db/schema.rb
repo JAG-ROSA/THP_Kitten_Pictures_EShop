@@ -83,8 +83,11 @@ ActiveRecord::Schema.define(version: 2021_03_10_094129) do
   create_table "order_items", force: :cascade do |t|
     t.bigint "order_id"
     t.bigint "item_id"
+    t.integer "quantity", default: 1
+    t.bigint "cart_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_order_items_on_cart_id"
     t.index ["item_id"], name: "index_order_items_on_item_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"
   end

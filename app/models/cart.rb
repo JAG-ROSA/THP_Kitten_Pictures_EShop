@@ -1,5 +1,7 @@
 class Cart < ApplicationRecord
   has_one :user
+  has_many :order_items
+  has_many :items, through: :order_items
   has_many :cart_items
   has_many :items, through: :cart_items
 

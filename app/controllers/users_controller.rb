@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   def show
     @user = helpers.current_user
-    @orders = @user.orders
+    @orders = User.where(id: current_user.id).first.cart.order_items.all
   end
 
   def update_params

@@ -47,8 +47,6 @@ class ItemDashboard < Administrate::BaseDashboard
     orders
     category_items
     categories
-    image_attachment
-    image_blob
     id
     title
     description

@@ -22,7 +22,8 @@ class UserDashboard < Administrate::BaseDashboard
     remember_created_at: Field::DateTime,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    # password:
+    password: PasswordField,
+    password_confirmation: PasswordField,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -63,6 +64,8 @@ class UserDashboard < Administrate::BaseDashboard
     first_name
     last_name    
     email
+    password
+    password_confirmation
   ].freeze
 
   # COLLECTION_FILTERS

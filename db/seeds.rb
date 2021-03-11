@@ -9,7 +9,7 @@ OrderItem.destroy_all
 Category.destroy_all
 CategoryItem.destroy_all
 
-1.time do 
+1.times do 
   admin_user = User.create!(
     first_name: "kittenadmin",
     last_name: Faker::Name.last_name,

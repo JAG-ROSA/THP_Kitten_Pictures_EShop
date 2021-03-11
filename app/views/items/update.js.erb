@@ -1,0 +1,5 @@
+// Update le cart
+document.querySelector("#items-list").insertAdjacentHTML("beforeend", "<%= j render 'new_item_in_cart', item: @new_item.item %>");
+// Afficher le flash
+document.querySelector("#flash").insertAdjacentHTML("beforeend", "<%= j render 'layouts/flash', flash: @flash %>");
+// Afficher la vue avec l'ancre sur l'index

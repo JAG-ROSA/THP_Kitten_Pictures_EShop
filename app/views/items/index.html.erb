@@ -1,12 +1,12 @@
-<div class="text-center jumobtron-container mb-5">
+<div class="text-center jumobtron-container mb-5 scroll-container">
   <img src="http://static1.squarespace.com/static/5aabcf9e4cde7a641fb885cb/5e6fb771477c7b0169b21fe5/5e99fdf59eff8e088f3129c8/1601311388124/puzzles+1.jpg?format=1500w" class="backg-img-main img-fluid">
-  <h1 class="ml6 text-danger centered"><span class="text-wrapper"><span class="letters">Choose your cats !</span></span></h1>
+  <h1 class="ml6 text-primary centered"><span class="text-wrapper"><span class="letters">Choose your cats !</span></span></h1>
 </div>  
 
 <div class="d-flex flex-wrap justify-content-center ">
   <% # Create a card for each item %>
-  <div class="container">
-    <div class="row justify-content-center">
+  <div class="container " id="anchor">
+    <div class="row justify-content-center" style="margin-top: 70px;">
       <button class="btn btn-primary cat-all mx-1 my-1">All cats</button>
     </div>
     <div class="row justify-content-center">
@@ -69,4 +69,8 @@ $(document).ready(function(){
   $(".cat-<%= category.id %>").click(function(){ filterGroup("group-<%= category.id %>"); });
   <% end %>
 });
+  setTimeout(function() {
+  let element = document.querySelector('#anchor');
+  element.scrollIntoView({behavior: "smooth"});
+  }, 2000);
 </script>

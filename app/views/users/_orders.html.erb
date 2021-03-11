@@ -5,6 +5,7 @@
     <tr>
       <th scope="col">Order ID</th>
       <th scope="col">Content</th>
+      <th scope="col">Quantity</th>
       <th scope="col">Total Amount</th>
       <th scope="col">Date</th>
     </tr>
@@ -12,15 +13,16 @@
   <tbody>
     <% orders.each do |order| %>
     <tr>
-      <th scope="row"><%= order.id %></th>
+      <th scope="row"><%= order.order_id %></th>
         <td>
-          <% order.items.each do |item| %>
+          
             <ul>
-              <li><%= item.title %>, <%= item.price %>€</li>
+              <li><%= order.item.title %>, <%= order.item.price %>€</li>
             </ul>
-          <% end%>
+          
         </td>
-      <td><%= order.amount %>€</td>
+      <td><%= order.quantity %></td>
+      <td><%= order.quantity * order.item.price %>€</td>
       <td><%= order.created_at.strftime("%d/%m/%Y") %></td>
     </tr>
     <% end %>

@@ -15,8 +15,8 @@
     <li>Amount paid: <%= number_to_currency(@order.amount, unit: "€", separator: ",", delimiter: "", format: "%n %u") %></li>
     <li>Items ordered:
       <ul>
-        <% @order.cart.items.each do |item| %>
-          <li><%= item.title %> -- <%= number_to_currency(item.price, unit: "€", separator: ",", delimiter: "", format: "%n %u") %></li>
+        <% @order.cart.cart_items.each do |cart_item| %>
+          <li><%= cart_item.item.title %> -- <%= number_to_currency(cart_item.item.price, unit: "€", separator: ",", delimiter: "", format: "%n %u") %> -- x <%= cart_item.quantity %></li>
         <% end %>
       </ul>
     </li>

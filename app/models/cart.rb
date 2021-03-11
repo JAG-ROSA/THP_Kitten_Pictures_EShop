@@ -1,10 +1,15 @@
 class Cart < ApplicationRecord
-  has_one :user
-  has_many :cart_items
+  belongs_to :user, optional: true
+  has_many :order_items
+  has_many :items, through: :order_items
+  has_many :cart_items, -> { order(:created_at) }
   has_many :items, through: :cart_items
-  has_many :orders
 
   def total
-    return self.items.pluck(:price).sum
+    sum = 0
+    self.cart_items.each do |cart_item|
+      sum += cart_item.total_price
+    end
+    return sum
   end
 end

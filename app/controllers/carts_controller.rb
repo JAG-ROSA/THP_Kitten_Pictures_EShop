@@ -5,7 +5,7 @@ class CartsController < ApplicationController
   before_action :is_owner, only: [:show, :edit, :update, :destroy]
 
   def index
-    @carts = Cart.all
+    @carts = @current_cart
   end
 
   def show

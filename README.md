@@ -1,11 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
-
-  <h3 align="center">XXX</h3>
+  <h3 align="center">The Kitten Project</h3>
 </p>
 
 
@@ -18,8 +14,11 @@
       <ul>
         <li><a href="#built-with">Built With</a></li>
       </ul>
-    </li>    
-    <li><a href="#license">License</a></li>
+    </li>
+    <li><a href="#features">Main Features</a></li>
+      <ul>
+        <li><a href="#bonus-features">Bonus Features</a></li>
+      </ul>    
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
@@ -30,41 +29,57 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+Find the app in production on Heroku [here](https://kitten-picture-eshop.herokuapp.com/)
 
 Welcome to the Kitten Picture Eshop Platform!
 
-With a large fashion and trendy selection of kitten pictures, you just have to select your favorite one, pay online and the glory is yours! 
+With a large fashion and trendy selection of kitten pictures, you just have to select your favorite one, pay online and the glory is yours! You will receive your delightful kitty pictures by e-mail.
 
-We hope that you will love our platform! 
+We hope you love our platform!
 
 
 ### Built With
 
 * [Ruby - ver. 5.7.1](https://ruby-doc.org/core-2.7.1/)
 * [Ruby on Rails - ver. 5.2.3](https://rubyonrails.org/)
-* [JavaScript]()
+* [JavaScript](https://www.ecma-international.org/publications-and-standards/standards/ecma-262/)
 * [Bootstrap](https://getbootstrap.com)
 
 
+<!-- FEATURES -->
+## Main Features
+* Visitors can create an account and log in and out of it
+* Visitors and connected users can browse through the items and see the items' individual product pages
+* Connected users can fill in a cart
+* Connected users can display their cart and remove items from it
+* Connected users can check out and pay for their order
+* After placing their order, connected users receive the cat pictures by e-mail
+* After an order is placed, the website administrator receives a recap of the order by e-mail at `kittenadmin@yopmail.com`
+* Connected users can visualize their account information and past orders on their profile
+* Connected users can edit their account information from their profile page
+* Visitors and connected users cannot see information pertaining to other users.
 
-<!-- LICENSE -->
-## License
+
+### Bonus Features
+* Visitors can fill in a cart
+* Visitors and connected users can add the same item to their cart several times
+* Visitors and connected users can visualize their cart at any point from a dropdown display in the navbar
+* Visitors and connected users can filter item display by category on the main page
 
 
 <!-- CONTACT -->
-## Contributor listed in alphabetical order
-* []()
-* []()
-* []()
-* []()
+## Contributors listed in alphabetical order
+* [Ariane](https://github.com/arejl)
+* [Arnaud](https://github.com/JAG-ROSA/)
+* [Caroline](https://github.com/Caro407)
+* [Martin](https://github.com/Martinfzz)
 
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 * [Font Awesome](https://fontawesome.com)
 * [Stripe](https://stripe.com/fr)
-* [SendGrid](https://sendgrid.com/)
+* [MailJet](https://fr.mailjet.com/)
 * [Stripe Gem](https://github.com/stripe/stripe-ruby)
 * [Devise Gem](https://github.com/heartcombo/devise)
 * [Faker Gem](https://github.com/faker-ruby/faker) 

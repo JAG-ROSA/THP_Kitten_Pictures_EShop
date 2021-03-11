@@ -1,6 +1,6 @@
-<div class="container mt-5" id="edit_registration">
+<div class="container" id="edit_registration">
 
-  <div class="form-container edit-container mt-3">
+  <div class="form py-5">
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
@@ -31,30 +31,30 @@
 
       <div class="actions">
         <%= f.submit "Update", style: "border-radius: 20px;
-                                          border: 1px solid #FF4B2B;
-                                          background-color: #FF4B2B;
-                                          color: #FFFFFF;
-                                          font-size: 12px;
-                                          font-weight: bold;
-                                          padding: 12px 45px;
-                                          letter-spacing: 1px;
-                                          text-transform: uppercase;
-                                          transition: transform 80ms ease-in;" %>
+                                                        border: 1px solid #FF4B2B;
+                                                        background-color: #FF4B2B;
+                                                        color: #FFFFFF;
+                                                        font-size: 12px;
+                                                        font-weight: bold;
+                                                        padding: 12px 45px;
+                                                        letter-spacing: 1px;
+                                                        text-transform: uppercase;
+                                                        transition: transform 80ms ease-in;" %>
       </div>
     <% end %>
 
     <h3 class="pt-3">Cancel my account</h3>
 
-    <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:"mb-4", style: "border-radius: 20px;
-                                          border: 1px solid red;
-                                          background-color: red;
-                                          color: #FFFFFF;
-                                          font-size: 12px;
-                                          font-weight: bold;
-                                          padding: 12px 45px;
-                                          letter-spacing: 1px;
-                                          text-transform: uppercase;
-                                          transition: transform 80ms ease-in;" %>
+    <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "mb-4", style: "border-radius: 20px;
+                                    border: 1px solid red;
+                                    background-color: red;
+                                    color: #FFFFFF;
+                                    font-size: 12px;
+                                    font-weight: bold;
+                                    padding: 12px 45px;
+                                    letter-spacing: 1px;
+                                    text-transform: uppercase;
+                                    transition: transform 80ms ease-in;" %>
 
     <%= link_to "Back", :back, class: "back" %>
 

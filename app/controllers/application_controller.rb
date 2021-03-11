@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
     def current_cart
       if session[:cart_id]
         cart = Cart.find_by(id: session[:cart_id])
+        @cart_items = CartItem.where(cart_id: session[:cart_id])
         if user_signed_in?
           cart.update(user_id: current_user.id)
         end

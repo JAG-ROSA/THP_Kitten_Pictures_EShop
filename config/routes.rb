@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   resources :carts, only: [:show, :update, :destroy, :create], path: "my_cart"
 
   resources :cart_items
+  post 'cart_items/:id/add' => "cart_items#add_quantity", as: "cart_item_add"
+  post 'cart_items/:id/reduce' => "cart_items#reduce_quantity", as: "cart_item_reduce"
 
   # Routes Stripe Checkout
   scope '/checkout' do

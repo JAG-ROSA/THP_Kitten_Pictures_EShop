@@ -1,0 +1,55 @@
+<% if !cart.items.empty? %>
+  <table class="table">
+    <thead>
+        <tr>
+        <th scope="col" colspan="2">Product</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <% cart.cart_items.each do |cart_item| %>
+      <tr>
+        <td class="w-25">
+          <%= image_tag cart_item.item.image, alt: "Image #{cart_item.item.id}", class: "w-100" %>
+        </td>
+        <td><%= cart_item.item.title %></td>
+        <td class="w-25"><%= number_to_currency(cart_item.item.price, unit: "€", separator: ",", delimiter: "", format: "%n %u") %></td>
+        <td id="item-quantity-in-cart">
+          <%= cart_item.quantity %>
+          <%= link_to "+", cart_item_add_path(id: cart_item), method: :post, remote: true, class: "btn btn-sm btn-success" %>
+          <% if cart_item.quantity > 1 %>
+            <%= link_to "-", cart_item_reduce_path(id: cart_item), method: :post, remote: true, class: "btn btn-sm btn-danger" %>
+          <% end %>
+        </td>
+        <td class="text-center w-25">
+          <%= link_to "Delete product", cart_item_path(cart_item), method: "delete", class: "btn btn-sm btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+    <tr>
+      <th scope="row" colspan="2">Total</th>
+      <td colspan="2"><strong><%= number_to_currency(cart.total, unit: "€", separator: ",", delimiter: "", format: "%n %u") %></strong></td>
+    </tr>
+  </table>
+  <% if cart.total.to_d > 1 %>
+    <% if user_signed_in? %>
+      <div class="col-md-8 mx-auto py-3 text-center">
+        <%= button_to "Checkout", checkout_create_path(total: cart.total), class: "btn btn-primary btn-block", remote: true %>
+      </div>
+    <% else %>
+      <div class="col-md-8 mx-auto py-3 text-center">
+        <%= button_to "Checkout", user_session_path, class: "btn btn-primary btn-block" %>
+      </div>
+    <% end %>
+  <% end %>
+<% else %>
+  <div id="yarn-ball">
+    <img style="height:80px" src="data:image/svg+xml;base64,PHN2ZyBpZD0iQ2FwYV8xIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MTIuMDkgNTEyLjA5IiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMi4wOSA1MTIuMDkiIHdpZHRoPSI1MTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGc+PGc+PHBhdGggZD0ibTQ2My4wOCAyMjcuNDI5Yy0xNC4wNi00NC40OS00OS43My04Mi4yMi04OC44MS0xMDYuNTMgOS41My0zOS41Ny0yMC4yLTc0Ljg1LTU4LjE4LTc0Ljg1LTI3Ljc0IDAtNTEuMDggMTguODItNTcuOTQgNDQuMzgtOTkuNC0xLjI1LTE4OC4wNiA3OS4xLTE4OC4wNiAxODB2MTUuNjJoNDAyeiIgZmlsbD0iI2MxYjBiNSIvPjxjaXJjbGUgY3g9IjQ3Mi4wOSIgY3k9IjI1Ni4wNDkiIGZpbGw9IiNmZmRhOGYiIHI9IjMwIi8+PHBhdGggZD0ibTQwMy41MyAyODYuMDQ5YzEuNjYgNC42OSAyLjU2IDkuNzQgMi41NiAxNSAwIDI0Ljg1LTIwLjE1IDQ1LTQ1IDQ1cy00NS0yMC4xNS00NS00NWMwLTUuMjYuOS0xMC4zMSAyLjU2LTE1eiIgZmlsbD0iI2VlZmFmZiIvPjxwYXRoIGQ9Im0yMTcuNTMgMjg2LjA0OWMxLjY2IDQuNjkgMi41NiA5Ljc0IDIuNTYgMTUgMCAyNC44NS0yMC4xNSA0NS00NSA0NXMtNDUtMjAuMTUtNDUtNDVjMC01LjI2LjktMTAuMzEgMi41Ni0xNXoiIGZpbGw9IiNlZWZhZmYiLz48ZyBmaWxsPSIjZmZkYThmIj48cGF0aCBkPSJtMTAzLjYyIDU0LjgzOWMxMS43MSAxMS43MSAxMS43MSAzMC43MSAwIDQyLjQyLTExLjcyIDExLjcyLTMwLjcxIDExLjcyLTQyLjQzIDAtMTEuNzItMTEuNzEtMTEuNzItMzAuNzEgMC00Mi40MiAxMS43Mi0xMS43MiAzMC43MS0xMS43MiA0Mi40MyAweiIvPjxwYXRoIGQ9Im02MS4xOSA5Ny4yNTljMTEuNzIgMTEuNzIgMTEuNzIgMzAuNzEgMCA0Mi40M3MtMzAuNzEgMTEuNzItNDIuNDMgMGMtMTEuNzEtMTEuNzItMTEuNzEtMzAuNzEgMC00Mi40MyAxMS43Mi0xMS43MSAzMC43MS0xMS43MSA0Mi40MyAweiIvPjwvZz48L2c+PGc+PGNpcmNsZSBjeD0iMzc2LjA5IiBjeT0iMTk2LjA0OSIgcj0iMTAiLz48cGF0aCBkPSJtNDcyLjA5IDIxNi4wNDljLS43OTEgMC0xLjU3OS4wMy0yLjM2NS4wNzYtMTQuMzk4LTM3LjkzNC00NC41NzktNzMuNzQ5LTg0LjM4LTEwMC4wMDYgNS45NzgtNDIuODA2LTI2Ljg4NC04MC4wNy02OS4yNTUtODAuMDctMjkuMDE2IDAtNTQuODAyIDE3Ljk0My02NS4xNzEgNDQuNDQzLTQ5LjcxOSAxLjI4Mi05OC4zNDIgMjIuMDg4LTEzNC40MDIgNTcuNjk3LS4wNDMuMDQyLS4wODQuMDg2LS4xMjYuMTI4bC0yMy42MjctMjMuNjI3YzYuNzE3LTEuNzkgMTIuODc4LTUuMzEzIDE3LjkyNi0xMC4zNjEgMTUuNjI2LTE1LjYyNSAxNS42My00MC45MzQgMC01Ni41NjItMTUuNjMyLTE1LjYzMi00MC45My0xNS42NDItNTYuNTY5LS4wMDMtOC4xMSA4LjEwNC0xMi4zNjIgMTkuMTI3LTExLjYzNCAzMC44MjItMTEuMDY0LS42ODktMjIuMzYzIDMuMTcyLTMwLjgwMyAxMS42MDQtMTUuNTgyIDE1LjU5NS0xNS41ODIgNDAuOTcxLjAwMyA1Ni41NjkgMTUuNTk3IDE1LjU5NiA0MC45NzQgMTUuNTk3IDU2LjU3MiAwIDUuMTUtNS4xNTEgOC41ODktMTEuMzcgMTAuMzM3LTE3Ljk1bDI0LjI4NiAyNC4yODZjLTI3LjcxOSAzMy41NjctNDIuNzkyIDc0LjU1NC00Mi43OTIgMTE3LjMzNHY1LjYyaC0xLjI4Yy0zMi4zNzggMC01OC43MiAyNi4zNDItNTguNzIgNTguNzIgMCAyOC44MjUgMjAuNjM0IDUzLjE4OSA0OS4wNjYgNTcuOTM0bDkuOTI1IDEuNjU0YzUuNDQ4LjkwOCAxMC42LTIuNzczIDExLjUwNy04LjIyLjkwOC01LjQ0OC0yLjc3Mi0xMC42LTguMjItMTEuNTA3bC05LjkyMi0xLjY1NGMtMTguNzQ5LTMuMTI4LTMyLjM1Ni0xOS4xOTctMzIuMzU2LTM4LjIwNiAwLTIxLjM1MSAxNy4zNy0zOC43MyAzOC43Mi0zOC43M2g2MS41MDljLS4xNDkgMS42NTYtLjIzIDMuMzIzLS4yMyA1IDAgMzAuMzI3IDI0LjY3MyA1NS4wMSA1NSA1NS4wMXM1NS0yNC42ODMgNTUtNTUuMDFjMC0xLjY3Ny0uMDgtMy4zNDQtLjIzLTVoNzYuNDU5Yy0uMTQ5IDEuNjU2LS4yMyAzLjMyMy0uMjMgNSAwIDMwLjMyNyAyNC42NzMgNTUuMDEgNTUgNTUuMDFzNTUtMjQuNjczIDU1LTU1YzAtMS42NzctLjA4LTMuMzQ0LS4yMy01aDU2LjIzYzIyLjA1NiAwIDQwLTE3Ljk0NCA0MC00MHMtMTcuOTQyLTQwLjAwMS0zOS45OTgtNDAuMDAxem0tNDAzLjgyOS0xNTQuMTM5YzcuODItNy44MiAyMC40NjYtNy44MjEgMjguMjg3IDAgNy44MSA3LjgwOSA3LjgxMyAyMC40NjcgMCAyOC4yNzgtNy44MTggNy44MTgtMjAuNDU5IDcuODIzLTI4LjI4NS4wMDEtLjAwMS0uMDAxLS4wMDUtLjAwNC0uMDA2LS4wMDYtNy44MTMtNy44MDctNy44Mi0yMC40NTUuMDA0LTI4LjI3M3ptLTE0LjE0MiA3MC43MDhjLTcuOCA3Ljc5OC0yMC40OSA3Ljc5OC0yOC4yODUuMDAzLTcuNzk0LTcuODAxLTcuNzk0LTIwLjQ5NC0uMDA2LTI4LjI4OCA3Ljc5OC03Ljc5MSAyMC40ODYtNy43OTYgMjguMjktLjAwNCAwIDAgLjAwMS4wMDEuMDAxLjAwMSA3Ljc5MiA3LjggNy43OTcgMjAuNDkyIDAgMjguMjg4em0yNS45NzEgMTM3LjgxMWMwLTkxLjAzNyA3Ni43ODgtMTY0LjY2OSAxNjYuMjEtMTY5LjcyOC0uMTM0IDEuNzc1LS4yMSAzLjU1OC0uMjEgNS4zNDggMCAxOC42OTEgNy4yNzkgMzYuMjcgMjAuNDk2IDQ5LjQ5OCAzLjkwMSAzLjkwNCAxMC4yMzMgMy45MTMgMTQuMTQyLjAwNiAzLjkwNy0zLjkwNCAzLjkxLTEwLjIzNS4wMDYtMTQuMTQyLTkuNDQzLTkuNDUyLTE0LjY0NC0yMi4wMS0xNC42NDQtMzUuMzYyIDAtMjcuNzMgMjIuNTExLTUwIDUwLTUwIDMxLjkwOSAwIDU2LjM4IDI5LjYxNCA0OC40NTggNjIuNTA5LTEuMDA5IDQuMTkuNzggOC41NTYgNC40NCAxMC44MzMgMzguNjUxIDI0LjA0MyA2Ny45NzQgNTcuNTE5IDgxLjY2NiA5Mi44NjQtMTEuMzk5IDcuMTg5LTE4LjU2NCAxOS43NzgtMTguNTY0IDMzLjc5NSAwIDcuMjgzIDEuOTY2IDE0LjExMiA1LjM4MSAyMGgtMzU3LjM4MXptMTMwIDMwLjYyYzAgMTkuMjk5LTE1LjcwMSAzNS0zNSAzNXMtMzUtMTUuNzAxLTM1LTM1YzAtMS42ODYuMTI1LTMuMzU0LjM1OS01aDY5LjI4MWMuMjM1IDEuNjQ2LjM2IDMuMzE1LjM2IDV6bTE4NiAwYzAgMTkuMjk5LTE1LjcwMSAzNS0zNSAzNXMtMzUtMTUuNzExLTM1LTM1LjAxYzAtMS42ODYuMTI1LTMuMzU0LjM1OS01bDY5LjI4MS4wMWMuMjM1IDEuNjQ2LjM2IDMuMzE1LjM2IDV6bTc2LTI1Yy0xMS4wMjggMC0yMC04Ljk3Mi0yMC0yMCAwLTExLjM3IDkuMjAyLTIwIDIwLTIwIDExLjAyOCAwIDIwIDguOTcyIDIwIDIwcy04Ljk3MiAyMC0yMCAyMHoiLz48Y2lyY2xlIGN4PSIxMDUuMDkxIiBjeT0iMzkyLjA0OSIgcj0iMTAiLz48cGF0aCBkPSJtMTU3LjYxIDQ1Ni4wNDljLTUuNTIzIDAtMTAgNC40NzctMTAgMTBzNC40NzcgMTAgMTAgMTBjMjMuNDIzIDAgNDIuNDgtMTkuMDU3IDQyLjQ4LTQyLjQ4IDAtMjAuODUzLTE0LjkyOC0zOC40NzYtMzUuNDk2LTQxLjkwNGwtMTMuNDQxLTIuMjRjLTUuNDQ1LS45MDctMTAuNiAyLjc3Mi0xMS41MDggOC4yMnMyLjc3MiAxMC42IDguMjIgMTEuNTA4bDEzLjQ0MSAyLjI0YzEwLjg4NCAxLjgxNCAxOC43ODQgMTEuMTQxIDE4Ljc4NCAyMi4xNzYgMCAxMi4zOTYtMTAuMDg0IDIyLjQ4LTIyLjQ4IDIyLjQ4eiIvPjwvZz48L2c+PC9zdmc+" />
+  </div>
+  <div class="my-5"><br></div>
+  <div class="col-md-8 mx-auto text-center py-4">
+  <p class="lead">There's nothing here...</p>
+  <%= link_to "Get shopping!", root_path, class: "btn btn-primary btn-block mt-5" %>
+  </div>
+<% end %>

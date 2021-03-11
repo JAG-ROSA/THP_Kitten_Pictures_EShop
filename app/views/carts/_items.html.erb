@@ -15,10 +15,12 @@
         </td>
         <td><%= cart_item.item.title %></td>
         <td class="w-25"><%= number_to_currency(cart_item.item.price, unit: "€", separator: ",", delimiter: "", format: "%n %u") %></td>
-        <td>
+        <td id="item-quantity-in-cart">
           <%= cart_item.quantity %>
-          <%= link_to "+", cart_item_add_path(id: cart_item), method: :post, class: "btn btn-sm btn-success" %>
-          <%= link_to "-", cart_item_reduce_path(id: cart_item), method: :post, class: "btn btn-sm btn-danger" %>
+          <%= link_to "+", cart_item_add_path(id: cart_item), method: :post, remote: true, class: "btn btn-sm btn-success" %>
+          <% if cart_item.quantity > 1 %>
+            <%= link_to "-", cart_item_reduce_path(id: cart_item), method: :post, remote: true, class: "btn btn-sm btn-danger" %>
+          <% end %>
         </td>
         <td class="text-center w-25">
           <%= link_to "Delete product", cart_item_path(cart_item), method: "delete", class: "btn btn-sm btn-danger" %>

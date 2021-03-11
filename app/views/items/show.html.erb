@@ -15,7 +15,7 @@
         <%= number_field_tag :quantity,1, min: 1, class: "form-control w-50 mx-auto" %>
         <%= submit_tag "Add to cart", class: "btn btn-danger mt-3 " %>
       <% end %>
-      <%= link_to "Return to list", items_path, class: "btn btn-secondary" %>
+      <button class= "btn btn-secondary" onclick="goBack()">Return to list</button>
     </div>
   </div>
 </div>

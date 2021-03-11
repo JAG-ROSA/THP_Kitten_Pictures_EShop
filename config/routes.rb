@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  namespace :admin do
+      resources :users
+      # resources :carts
+      # resources :cart_items
+      # resources :categories
+      # resources :category_items
+      resources :items
+      # resources :orders
+      # resources :order_items
+
+      root to: "users#index"
+    end
   get 'avatars/create'
   root 'items#index'
   devise_for :users, controllers: { registrations: 'users/registrations' }

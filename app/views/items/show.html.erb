@@ -11,14 +11,9 @@
       <p class="card-text"><%= @item.description %></p>
       <p class="card-text">Price: <%= @item.price %>€</p>
       <hr>
-      <% if user_signed_in? %>
-        <%= form_tag url_for(action: "update"), method: "patch" do %>
-          <%= submit_tag "Add to cart", class: "btn btn-danger mt-3 " %>
-        <% end %>
-      <% else %>
-        <%= form_tag url_for(item_path(@item.id)), method: "patch" do %>
-          <%= submit_tag "Add to cart", class: "btn btn-danger mt-3 " %>
-        <% end %>
+      <%= form_tag url_for(item_path(@item.id)), method: "patch" do %>
+        <%= number_field_tag :quantity,1, min: 1, class: "form-control w-50 mx-auto" %>
+        <%= submit_tag "Add to cart", class: "btn btn-danger mt-3 " %>
       <% end %>
       <%= link_to "Return to list", items_path, class: "btn btn-secondary" %>
     </div>

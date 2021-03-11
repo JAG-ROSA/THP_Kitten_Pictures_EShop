@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
   def update
     @cart = Cart.find(session[:cart_id])
     @cart_item = CartItem.find_by(cart_id: @cart.id, item_id: params[:id])
-    @new_item = CartItem.new(cart_id: @cart.id, item_id: params[:id])
+    @new_item = CartItem.new(cart_id: @cart.id, item_id: params[:id], quantity: params[:quantity])
     if !@cart_item
       if @new_item.save
         flash[:success] = "Item added to the cart"

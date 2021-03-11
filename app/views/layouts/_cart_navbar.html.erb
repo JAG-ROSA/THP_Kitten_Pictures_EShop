@@ -23,7 +23,7 @@
     </ol>
     <div class="dropdown-divider"></div>
     <div class="text-center">
-      <p>Total: <%= cart.items.pluck(:price).sum %>€</p>
+      <p>Total: <%= cart.total %>€</p>
       <%= link_to "View cart", cart_path(cart), class: "btn btn-primary btn-sm" %>
     </div>
 

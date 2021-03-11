@@ -10,9 +10,7 @@ class CartItemsController < ApplicationController
       # Iterate the line_item's quantity by one
       @cart_item.quantity += 1
     else
-      @cart_item = CartItem.new
-      @cart_item.cart = current_cart
-      @cart_item.item = chosen_product
+      @cart_item = CartItem.new(quantity: params[:quantity], cart_id: current_cart, item_id: chosen_product)
     end
 
     # Save and redirect to cart show path

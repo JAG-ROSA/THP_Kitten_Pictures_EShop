@@ -1,7 +1,11 @@
 <% # a simple card with image, title and description %>
   <div class="card mx-3 my-3 text-white border-primary text-center <%= item.category_classes %>" style="width:300px" >
     <div class="card-header bg-primary"><%= item.title %></div>
-    <%= image_tag item.image, alt: "avatar", class: "card-img-top" %>
+    <% if item.image.attached? %>
+      <%= image_tag item.image, alt: "image", class: "card-img-top" %>
+    <% else %>  
+      <img class="card-img-top" src="<%= item.image_url%>", alt="image", class= "card-img-top" >
+    <% end %>
     <div class="card-body">
       <h4 class="card-title text-primary"><%= item.title %></h4>
       <p class="card-text text-secondary"><%= item.description %></p>

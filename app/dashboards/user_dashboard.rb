@@ -10,7 +10,7 @@ class UserDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     cart: Field::HasOne,
     orders: Field::HasMany,
-    avatar_attachment: Field::HasOne,
+    avatar: Field::ActiveStorage,
     avatar_blob: Field::HasOne,
     id: Field::Number,
     email: Field::String,

@@ -14,7 +14,7 @@ class ItemDashboard < Administrate::BaseDashboard
     orders: Field::HasMany,
     category_items: Field::HasMany,
     categories: Field::HasMany,
-    image_attachment: Field::HasOne,
+    image: Field::ActiveStorage,
     image_blob: Field::HasOne,
     id: Field::Number,
     title: Field::String,
@@ -34,6 +34,7 @@ class ItemDashboard < Administrate::BaseDashboard
     id
     title
     price
+    image
     
     
   ].freeze
@@ -63,7 +64,7 @@ class ItemDashboard < Administrate::BaseDashboard
     title
     description
     price
-    image_url
+    image
   ].freeze
 
   # COLLECTION_FILTERS

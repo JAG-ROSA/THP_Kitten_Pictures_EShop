@@ -35,15 +35,23 @@ class CartItemsController < ApplicationController
     @cart_item = CartItem.find(params[:id])
     @cart_item.quantity += 1
     @cart_item.save
-    redirect_back(fallback_location: root_path)
+
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: root_path) }
+      format.js { }
+    end
   end
-  
+
   def reduce_quantity
     @cart_item = CartItem.find(params[:id])
     if @cart_item.quantity > 1
       @cart_item.quantity -= 1
     end
     @cart_item.save
-    redirect_back(fallback_location: root_path)
+
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: root_path) }
+      format.js { }
+    end
   end
 end

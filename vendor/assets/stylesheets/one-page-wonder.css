@@ -131,6 +131,14 @@ header.masthead .bg-circle-4 {
   background-color: #161d6f !important;
 }
 
+.border-primary{
+  border-color: #161d6f !important;
+}
+
+.text-primary{
+  color: #161d6f !important;
+}
+
 .btn-primary {
   background-color: #161d6f;
   border-color: #161d6f;

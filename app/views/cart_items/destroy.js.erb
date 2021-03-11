@@ -3,6 +3,8 @@ if(document.querySelector("#items_in_current_cart")){
   document.querySelector("#items_in_current_cart").innerHTML = "<%= j render 'carts/items', cart: @cart %>" ;
 } else {
   document.querySelector(".nav-item.dropdown").innerHTML = "<%= j render partial: 'layouts/cart_navbar', locals: {cart: @cart} %>";
+  document.querySelector(".dropdown").classList.toggle("show");
+  document.querySelector(".dropdown-menu").classList.toggle("show");
 };
 
 // Render flash

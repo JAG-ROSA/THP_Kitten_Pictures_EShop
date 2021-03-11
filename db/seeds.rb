@@ -9,6 +9,17 @@ OrderItem.destroy_all
 Category.destroy_all
 CategoryItem.destroy_all
 
+1.time do 
+  admin_user = User.create!(
+    first_name: "kittenadmin",
+    last_name: Faker::Name.last_name,
+    email: "kittenadmin@yopmail.com",
+    password: "azerty",
+    admin: true,
+  )  
+  puts "Create Admin User"
+end
+
 5.times do
   new_user = User.create!(
     first_name: Faker::Name.first_name,

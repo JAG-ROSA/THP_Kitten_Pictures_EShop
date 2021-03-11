@@ -1,0 +1,8 @@
+// Change item's quantity in cart
+if(document.querySelector("#item-quantity-in-cart")){
+  document.querySelector("#items_in_current_cart").innerHTML = "<%= j render partial: 'carts/items', locals: { cart: @cart_item.cart } %>" ;
+} else {
+  document.querySelector(".nav-item.dropdown").innerHTML = "<%= j render partial: 'layouts/cart_navbar', locals: { cart: @cart_item.cart } %>";
+  document.querySelector(".dropdown").classList.toggle("show");
+  document.querySelector(".dropdown-menu").classList.toggle("show");
+};

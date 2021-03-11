@@ -43,7 +43,7 @@ class UserDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     cart
     orders
-    avatar_attachment
+    avatar
     avatar_blob
     id
     email

@@ -11,13 +11,16 @@
   <p>We have received your payment of <%= number_to_currency(@order.amount, unit: "€", separator: ",", delimiter: "", format: "%n %u") %>.</p>
   <p>Please find the picture(s) you bought below:</p>
   <br/>
-  <% @order.cart.items.each do |item| %>
-    <h3><%= item.title %></h3>
-    <p><%= number_to_currency(item.price, unit: "€", separator: ",", delimiter: "", format: "%n %u") %></p>
+  <% @order.cart.cart_items.each do |cart_item| %>
+    <h3><%= cart_item.item.title %></h3>
+    <p><%= number_to_currency(cart_item.item.price, unit: "€", separator: ",", delimiter: "", format: "%n %u") %></p>
+    <p>Ordered <%= cart_item.quantity %> time(s)</p>
     <br/>
-    <%= image_tag attachments[item.image.filename.to_s].url, :style => "height:400px" %>     
-    <br/>
-    <br/>
+    <% cart_item.quantity.times do %>
+      <%= image_tag attachments[cart_item.item.image.filename.to_s].url, :style => "height:400px" %>     
+      <br/>
+      <br/>
+    <% end %>
   <% end %>
 </body>
 </html>

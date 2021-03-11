@@ -21,8 +21,14 @@ class CartItemsController < ApplicationController
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
-    redirect_back(fallback_location: root_path)
-    flash[:warning] = "Item removed from the cart"
+    @cart = @cart_item.cart
+
+    @flash = [["warning", "Item removed from the cart"]]
+
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: root_path) }
+      format.js { }
+    end
   end
 
   def add_quantity

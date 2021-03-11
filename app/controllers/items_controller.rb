@@ -18,16 +18,18 @@ class ItemsController < ApplicationController
     @cart = Cart.find(session[:cart_id])
     @cart_item = CartItem.find_by(cart_id: @cart.id, item_id: params[:id])
     @new_item = CartItem.new(cart_id: @cart.id, item_id: params[:id], quantity: params[:quantity])
+    @flash = []
     if !@cart_item
       if @new_item.save
-        flash[:success] = "Item added to the cart"
-        redirect_back(fallback_location: root_path)
-      else
-        render action: "show"
+        @flash << ["success", "Item added to the cart"]
       end
     else
-      flash[:danger] = "Item already added to the cart"
-      redirect_back(fallback_location: root_path)
+      @flash << ["danger", "Item already added to the cart"]
+    end
+
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js { }
     end
   end
 

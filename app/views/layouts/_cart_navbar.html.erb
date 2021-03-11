@@ -1,4 +1,4 @@
-<%= link_to cart_path(cart), class: "nav-link dropdown-toggle", id: "navbarDropdown", role: "button", "data-toggle": "dropdown", "aria-haspopup": "true", "aria-expanded": "false" do %>
+<%= link_to cart_path(cart), class: "nav-link dropdown-toggle mx-3", id: "navbarDropdown", role: "button", "data-toggle": "dropdown", "aria-haspopup": "true", "aria-expanded": "false" do %>
 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart" viewbox="0 0 20 20">
   <path
     d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
@@ -6,28 +6,38 @@
 My cart
 <% end %>
 
-<div class="dropdown-menu" id="items-list">
-<ol class="pr-2">
+<div class="dropdown-menu mx-2" id="items-list" style="width: 20vw">
+  <ol>
 
-  <% if cart.items.any? %>
-    <% cart.cart_items.each do |cart_item| %>
-      <li>
-        <%= cart_item.item.title %>
-        -
-        <%= cart_item.item.price %>€
-        -
-        <%= cart_item.quantity %>
-        <%= link_to "+", cart_item_add_path(id: cart_item), method: :post, remote: true, class: "btn btn-sm btn-success" %>
-        <% if cart_item.quantity > 1 %>
-          <%= link_to "-", cart_item_reduce_path(id: cart_item), method: :post, remote: true, class: "btn btn-sm btn-danger" %>
-        <% end %>
-        <%= link_to cart_item_path(id: cart_item_id(cart, cart_item.item)), method: "delete", class: "text-dark", remote: true do %>
-        <i class="fas fa-trash" style="font-size: 13px"></i>
-      <% end %>
-    </li>
+    <% if cart.items.any? %>
+      <% cart.cart_items.each do |cart_item| %>
+        <li>
+          <div class="row">
+            <div class="col-12">
+              <%= cart_item.item.title %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <%= cart_item.item.price %>€
+            </div>
+
+            <div class="col-6">
+              <%= cart_item.quantity %>
+              <%= link_to "+", cart_item_add_path(id: cart_item), method: :post, remote: true, class: "btn btn-sm btn-success" %>
+              <% if cart_item.quantity > 1 %>
+                <%= link_to "-", cart_item_reduce_path(id: cart_item), method: :post, remote: true, class: "btn btn-sm btn-danger" %>
+              <% end %>
+              <%= link_to cart_item_path(id: cart_item_id(cart, cart_item.item)), method: "delete", class: "text-dark", remote: true do %>
+                <i class="fas fa-trash" style="font-size: 13px"></i>
+              <% end %>
+            </div>
+          </div>
+      </li>
+    <% end %>
   <% end %>
-<% end %>
-</ol>
+  </ol>
 
 <% if cart.items.empty? %>
 <div id="empty-cart">

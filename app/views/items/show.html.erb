@@ -13,7 +13,7 @@
               <span class="badge badge-success"><%= category.label %></span>
             <% end %>
           </div>
-          <h5 class="card-text">Price: <%= @item.price %> €</h5>
+          <h5 class="card-text">Price: <%= number_to_currency(@item.price, unit: "€", separator: ",", delimiter: "", format: "%n %u") %></h5>
           <p class="card-text"><%= @item.description %></p>
           <div class="card-text">
             <%= form_tag url_for(item_path(@item.id)), method: "patch", class: "form-inline" do %>

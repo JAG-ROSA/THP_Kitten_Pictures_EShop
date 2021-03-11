@@ -9,14 +9,16 @@ OrderItem.destroy_all
 Category.destroy_all
 CategoryItem.destroy_all
 
+
 1.times do 
+
   admin_user = User.create!(
     first_name: "kittenadmin",
     last_name: Faker::Name.last_name,
     email: "kittenadmin@yopmail.com",
     password: "azerty",
     admin: true,
-  )  
+  )
   puts "Create Admin User"
 end
 
@@ -33,7 +35,7 @@ end
 
 possible_categories = %w(funny cute active mischievous fluffy gorgeous orange black regal sassy unique)
 possible_categories.each do |category_name|
-  Category.create(label:category_name)
+  Category.create(label: category_name)
 end
 
 10.times do |index|
@@ -43,8 +45,8 @@ end
     price: rand(1.0..1000.0).round(2),
     image_url: "https://i-dja.unimedias.fr/sites/art-de-vivre/files/styles/large/public/dj115_chaton_jardin_annala.jpg?auto=compress%2Cformat&crop=faces%2Cedges&cs=srgb&fit=crop&h=599&w=900",
   )
-  
-  item.image.attach(io: File.open("app/assets/images/kitten_pictures/kitten_#{index+1}.jpg"), filename: "kitten_#{index+1}.jpg")
+
+  item.image.attach(io: File.open("app/assets/images/kitten_pictures/kitten_#{index + 1}.jpg"), filename: "kitten_#{index + 1}.jpg")
   item.categories << Category.all.sample(rand(1..3))
   puts "Create Item"
 end
